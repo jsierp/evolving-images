@@ -8,7 +8,7 @@ from utils import construct_image
 
 class SquaredDifferenceLoss(object):
 
-    def __init__(self, target_image_path, internal_shape=(75, 75), k=3, verbose=True):
+    def __init__(self, target_image_path, internal_shape, k=3, verbose=True):
         self.target_image = imresize(imageio.imread(target_image_path), internal_shape)
         self.verbose = verbose
         self.k = k

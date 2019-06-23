@@ -23,13 +23,14 @@ def construct_image(polygons, image_shape, k):
         for j in range(1, k):
             cr.line_to(polygon[4 + 2 * j] * width, polygon[4 + 2 * j + 1] * height)
         cr.fill()
+
     return data
 
 
 if __name__ == '__main__':
-    polygons = np.array([[1.0, 0., 0., 1., 30, 30, 30, 50, 50, 50],
-                         [0.0, 1.0, 0., 0.5, 40, 40, 80, 50, 90, 100],
-                         [0., 0., 1., 0.3, 10, 10, 120, 10, 100, 150]])
+    polygons = np.array([[1.0, 0., 0., 1., 1.30, 1.30, 0.30, 0.50, 0.50, 0.50],
+                         [0., 0., 1., 0.3, 0.10, 0.10, 1.120, 0.10, 0.100, 1.150],
+                         [0.0, 1.0, 0., 0.5, 0.40, 1.40, -.80, 0.50, 0.90, 0.100],])
     img = construct_image(polygons, (200, 200), 3)
     plt.imshow(img)
     plt.show()
