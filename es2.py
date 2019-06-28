@@ -60,7 +60,7 @@ def es2(population_size, number_of_offspring, num_of_polygons, init_num_of_polyg
             children_population[i] = permute_mutation(children_population[i])
             children_population[i] = reinit_polygons_mutation(children_population[i])
 
-        if counter > 1:
+        if counter > 1 or current_num_of_polygons < t // 10:
             current_num_of_polygons += 1
             print('Adding a new polygon, now: ', current_num_of_polygons)
             children_population = np.hstack([current_population, random_population(population_size, 1, k)])

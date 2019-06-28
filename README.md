@@ -1,6 +1,13 @@
-# evolving-images
-Reproduction of popular images using simple shapes with evolutionary algorithms 
+# Evolving-images
+Reproduction of popular images using simple shapes with evolutionary algorithms.
 
-Crossover important on the beginning.
+Results and methods presented in show.ipynb
 
-Later mutation.
+## Installation
+1. Install cairo
+2. virtualenv -p python2 venv
+3. source venv/bin/activate
+4. pip install -r requirements.txt
+
+## Run
+python2 optimization.py (uncomment chosen algorithm)

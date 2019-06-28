@@ -12,6 +12,11 @@ class SquaredDifferenceLoss(object):
         self.target_image = imresize(imageio.imread(target_image_path), internal_shape)
         self.verbose = verbose
         self.k = k
+        w, h = internal_shape
+        x, y = np.meshgrid(range(w), range(h))
+        self.weight_mask = 0.1 + (2. - (x - w/2.) ** 2 / (w/2.) ** 2 - (y - h/2.) ** 2 / (h/2.) ** 2).reshape(
+            (w, h, 1)
+        )
 
     def __call__(self, population):
         population_size = population.shape[0]
@@ -39,3 +44,13 @@ class SquaredDifferenceLoss(object):
         '''
 
         return np.sum((generated_image.astype(np.int64) - target_image.astype(np.int64)) ** 2)
+
+    def pixelwise_weighted_diff(self, generated_image, target_image):
+        '''
+        Returns summed pixelwise difference between generated and target image.
+        :param generated_image: shape - (h, w, 4) - generated image in rgba format
+        :param target_image: shape - (h, w, 4) - target image in rgba format
+        :return: pixelwise difference between given images
+        '''
+
+        return np.sum(self.weight_mask * (generated_image.astype(np.int64) - target_image.astype(np.int64)) ** 2)
