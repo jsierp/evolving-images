@@ -11,3 +11,5 @@ Results and methods presented in show.ipynb
 
 ## Run
 python2 optimization.py (uncomment chosen algorithm)
+
+![alt text](https://github.com/ghaddy/evolving-images/blob/master/monalisa.gif "Mona Lisa")
